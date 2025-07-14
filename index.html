@@ -1,8 +1,232 @@
-
 <!-- Tipografía -->
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 
-<!-- Aquí va el resto del código HTML completo del acordeón -->
-<p style="font-family: 'DM Serif Text', serif; text-align: center; margin-top: 50px;">
-  Este es un ejemplo de la estructura del menú en acordeón. Sustituir por el código final.
-</p>
+<style>
+.fixed-wrapper {
+  height: 90vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  border-top: 3px solid #c8544b;
+  border-bottom: 3px solid #c8544b;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.accordion-container {
+  padding-bottom: 40px;
+}
+
+.accordion {
+  background-color: #ffffff;
+  color: #dd6532;
+  cursor: pointer;
+  padding: 14px 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #c8544b;
+  text-align: left;
+  outline: none;
+  font-size: 28px;
+  font-family: 'DM Serif Text', serif;
+  line-height: 1.3;
+  transition: background-color 0.2s ease;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accordion span {
+  color: #000;
+  font-size: 20px;
+  font-family: sans-serif;
+  flex: 1;
+}
+
+.accordion:hover {
+  background-color: #f7c58e;
+}
+
+.accordion::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #dd6532;
+  border-bottom: 2px solid #dd6532;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, top 0.3s ease, border-color 0.3s ease;
+  margin-left: auto;
+  position: relative;
+  top: 0;
+}
+
+.accordion:hover::after {
+  top: -4px;
+  border-color: #000;
+}
+
+.accordion.active::after {
+  transform: rotate(135deg);
+  top: 0;
+  border-color: #000;
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+  scroll-margin-top: 60px;
+  margin-bottom: 5px;
+}
+
+.panel.open {
+  max-height: 5000px;
+}
+
+.desktop-img,
+.mobile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleFadeIn 0.8s ease forwards;
+  animation-delay: 0.2s;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-img {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .desktop-img {
+    display: none;
+  }
+  .mobile-img {
+    display: block;
+  }
+  .accordion {
+    font-size: 22px;
+  }
+  .accordion span {
+    font-size: 16px;
+  }
+}
+
+@keyframes scaleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
+
+<div class="fixed-wrapper">
+  <div class="accordion-container" id="menu-accordion">
+    <button class="accordion">Desayunos <span>(Incluye Jugo o Café de olla / Americano (refill) - hasta la 1 pm)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/desayuno-1-AzGNXOgkZQhJ81nV.jpg">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/desayuno-1-cel-mk3Jvlgn4oTBvKv9.jpg">
+    </div>
+    
+    <button class="accordion">Enchiladas & Chilaquiles <span>(También opción de desayuno)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/enchiladas-mk3Jvo892btjnx85.jpg">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/enchiladas-2-m7Vb3P88o8cKpX4x.jpg">
+    </div>
+
+    <button class="accordion">Pozole, Caldos & Consomé <span>(Algo calientito siempre cae bien)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/pozole-YD0wlL8DelivMLkG.jpg">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/pozole-2-YleQWo227QUWwNQj.jpg">
+    </div>
+
+    <button class="accordion">Tostadas & Pambazo <span>(Para esos antojitos)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/antojitos-YD0wlL8vkes4Dpl8.jpg">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/antojitos-2-mv0JWZ5xK6sj8xvW.jpg">
+    </div>
+
+    <button class="accordion">Tacos & Flautas <span>(Para chuparse los dedos)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/tacos-YNq2BWOrp2cNzyLd.jpg">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/tacos-2-Aq2JWPe6g6H3o8wq.jpg">
+    </div>
+
+    <button class="accordion">Especialidades <span>(Orgullosamente de Casa Beatricita)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/especialidades-cb-mjEG71OgNbuylMO9.png">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/especialidades-cb---mobile-Y4LvDjbkOLckwoz2.png">
+    </div>
+
+    <button class="accordion">Extras <span>(Para acompañar tus antojos)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/extras-cb---desktop-YNq2BanbvlIWzQkO.png">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/extras-cb---mobile-AVLa7v4Qrgtk82nR.png">
+    </div>
+
+    <button class="accordion">Postres <span>(Siempre queda espacio)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/postres-cb---desktop-mp8JWjObaPHWVMeV.png">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/postres-cb---mobile-mnlJWx0bpxIWovkO.png">
+    </div>
+
+    <button class="accordion">Bebidas & cócteles con y sin alcohol <span>(Preparados con amor)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/bebidas-cb-YanJ1lGEoOikOQgV.png">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/bebidas-cb---mobile-YNq2Ban7NvUaBvbn.png">
+    </div>
+
+    <button class="accordion">Tequilas & Mezcales <span>(Al 2x1- En 2 caballitos)</span></button>
+    <div class="panel">
+      <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/tequila-y-mezcal-cb-A1a5Pn6poGfjEoK8.png">
+      <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/tequila-y-mezcal-cb---mobile-AGBb2D1yXwuE10j9.png">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const acc = document.querySelectorAll(".accordion");
+  const wrapper = document.querySelector(".fixed-wrapper");
+
+  acc.forEach(button => {
+    button.addEventListener("click", function () {
+      const isActive = this.classList.contains("active");
+
+      acc.forEach(btn => {
+        btn.classList.remove("active");
+        btn.nextElementSibling.classList.remove("open");
+      });
+
+      if (!isActive) {
+        this.classList.add("active");
+        const panel = this.nextElementSibling;
+        panel.classList.add("open");
+
+        setTimeout(() => {
+          const titleTop = this.offsetTop;
+          const wrapperTop = wrapper.scrollTop;
+
+          if (titleTop < wrapperTop || titleTop > wrapperTop + wrapper.clientHeight - 100) {
+            wrapper.scrollTo({
+              top: titleTop,
+              behavior: "smooth"
+            });
+          }
+        }, 300);
+      }
+    });
+  });
+});
+</script>
+
