@@ -3,7 +3,6 @@
 
 <style>
 .fixed-wrapper {
-  height: 90vh;
   overflow-y: auto;
   scroll-behavior: smooth;
   border-top: 3px solid #c8544b;
@@ -11,6 +10,13 @@
   max-width: 900px;
   margin: 0 auto;
   position: relative;
+  max-height: 90vh; /* Solo aplica en escritorio */
+}
+
+@media screen and (max-width: 768px) {
+  .fixed-wrapper {
+    max-height: none; /* En mobile se adapta automáticamente */
+  }
 }
 
 .accordion-container {
@@ -137,7 +143,7 @@
       <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/desayuno-1-AzGNXOgkZQhJ81nV.jpg">
       <img class="mobile-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/desayuno-1-cel-mk3Jvlgn4oTBvKv9.jpg">
     </div>
-    
+
     <button class="accordion">Enchiladas & Chilaquiles <span>(También opción de desayuno)</span></button>
     <div class="panel">
       <img class="desktop-img" src="https://assets.zyrosite.com/YD0waQG7P9Irok9z/enchiladas-mk3Jvo892btjnx85.jpg">
@@ -229,4 +235,3 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
